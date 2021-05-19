@@ -4,3 +4,4 @@ settings.py
 env/
 __pycache__/
 bot-info.md
+*.swp

@@ -1,15 +1,11 @@
 import logging
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-# import pprint
-import settings
+import local_settings
 
 logging.basicConfig(filename='bot.log', level=logging.INFO)
 
 def greet_user(update, context):
     logging.info("Вызван /start")
-    # print(update)
-    # pprint.pprint(str(update))
-    # print(1/0) # тестирование модуля logging
     update.message.reply_text("Здравствуй, пользователь")
 
 def talk_to_me(update, context):
@@ -18,7 +14,7 @@ def talk_to_me(update, context):
     update.message.reply_text(text)
 
 def main():
-    mybot = Updater(token=settings.API_KEY, use_context=True)
+    mybot = Updater(token=local_settings.TELEGRAM_BOT_TOKEN, use_context=True)
     
     dp = mybot.dispatcher
     dp.add_handler(CommandHandler("start", greet_user))
